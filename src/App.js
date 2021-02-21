@@ -3,7 +3,9 @@ import axios from 'axios';
 import './App.css';
 import React, {Component} from 'react'
 import {Button, Form, Container, Header, FormField} from 'semantic-ui-react'
-
+//import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default class App extends Component {
   // state = { counter: 0 };
   constructor(props) {
@@ -25,6 +27,8 @@ export default class App extends Component {
     e.preventDefault();
     console.log(this.state);
     console.log("hola");
+    toast.success("Thank you for your event information!");
+    
 
     axios.post('https://sheet.best/api/sheets/4b3a5b3b-e79d-406b-86de-72d2a8cdc1df', this.state)
     .then(response => {
@@ -67,7 +71,20 @@ export default class App extends Component {
             </select>
           </FormField> */}
           
+          
           <Button color="blue" type='submit'>Submit</Button>
+          <ToastContainer 
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
+
         </Form>
 
       </Container>
